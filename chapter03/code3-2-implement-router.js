@@ -1,6 +1,6 @@
 //localhost:3000/user 과 localhost:3000/feed라는 두 가지 URL 이 있다고 가정하고 두 요청에 대해 다른 응답을 주는 코드를 작성한다
 const http = require("http");
-const url = require("url");
+const url = require("url"); //url 모듈을 로딩하고 변수에 할당
 
 http
   .createServer((req, res) => {
