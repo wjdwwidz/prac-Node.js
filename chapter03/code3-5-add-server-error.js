@@ -4,13 +4,13 @@ http
   .createServer((req, res) => {
     const path = url.parse(req.url, true).pathname;
     res.setHeader("Content-Type", "text/html");
-
-    if (path === "/user") {
-      user(req, res);
-    } else if (path === "/feed") {
-      feed(req, res);
-    } else if (res.statusCode === 500) {
-      serverError(req, res);
+    if (path in urlMap) {
+      try {
+        urlMap[path](req, res);
+      } catch (err) {
+        console.log(err);
+        serverError(req, res);
+      }
     } else {
       notFound(req, res);
     }
@@ -39,4 +39,10 @@ const notFound = (req, res) => {
 const serverError = (req, res) => {
   res.statusCode = 500;
   res.end("500 server error");
+};
+
+const urlMap = {
+  "/": (req, res) => res.end("HOME"),
+  "/user": user,
+  "/feed": feed,
 };
