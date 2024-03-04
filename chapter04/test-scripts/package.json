@@ -1,0 +1,9 @@
+{
+  "name": "test-scripts",
+  "version": "1.0.0",
+  "scripts": {
+    "hello": "echo 'hello Node.js '",
+    "prehello": "echo 'PRE Hello'",
+    "posthello": "echo 'POST Hello'"
+  }
+}
