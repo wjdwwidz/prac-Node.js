@@ -1,0 +1,56 @@
+<h1>글 제목</h1>
+<h2 class="text-xl">제목입니다.</h2>
+<div>
+    작성자: <b>작성자 이름</b>
+</div>
+<div>
+    <!-- 게시글의 제목 -->
+    <!-- 작성자 이름 -->
+    조회수: 9999 | 작성일시: 2022-01-01 00:00:00
+    <!-- 조회수와 작성일시 -->
+    <button onclick="modifypost()">수정</button>
+    <!-- 게시글 관련 버튼 영역 -->
+    <button onclick="deletePost()">삭제</button>
+    <div>
+        <pre>본문입니다. 하이호이</pre>
+    </div>
+    <!-- 본문 표시 영역 -->
+</div>
+<section>
+    <div>
+        <h3>3개의 댓글이 있습니다.</h3>
+        <!-- 댓글 개수 표시 -->
+        <form method="post" action="/write-comment">
+            <!-- 댓글 작성 폼 -->
+            <div>
+                <input type="text" name="name" placeholder="이름" />
+                <input type="password" name="password" placeholder="비밀번호" />
+            </div>
+            <div>
+                <textarea cols="40" rows="3" name="comment" placeholder="댓글을 입력하세요."></textarea>
+            </div>
+            <!-- 댓글 전송 버튼 -->
+            <br /><br />
+            <button type="submit">댓글 쓰기</button>
+        </form>
+    </div>
+</section>
+<!-- 댓글 표시 영역 -->
+<section>
+    <div>
+        <div>
+            작성자: <b>댓글 작성자</b>
+        </div>
+        <div>
+            작성일시: 2022-01-01 00:00:00 <button onclick="deleteComment('1')">삭제</button>
+        </div>
+        <div>
+            <pre>댓글 내용</pre>
+        </div>
+    </div>
+</section>
+<footer>
+    <div>
+    </div>
+</footer>
+<a href="/">목록으로</a>
