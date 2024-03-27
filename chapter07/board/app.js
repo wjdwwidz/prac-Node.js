@@ -2,6 +2,7 @@ const express = require("express");
 const handlebars = require("express-handlebars");
 const app = express();
 const mongodbConnection = require("./configs/mongodb-connection");
+const PostService = require("./services/post-service");
 
 app.engine("handlebars", handlebars.create({helpers: require("./configs/handlebars-helpers"),}).engine); //핸들바 생성 및 엔진 반환
 app.set("view engine", "handlebars"); //웹페이지 로드시 사용할 템플릿 엔진 설정 
@@ -23,7 +24,17 @@ app.get("/detail/:id",async(req,res)=>{
 		title:"테스트 게시판",
 	});
 });
+app.get("/write",async(req,res)=>{
+	res.render("write", {title:"테스트 게시판"});
+})
 
+app.post("/write", async(req,res)=>{
+	const post = req.body;
+	//글쓰기 후 결과 반환
+	const result = await PostService.writePost(collection, post);
+	//생성된 도큐먼트의 id 를 사용해 상세페이지로 이동
+	res.redirect(`/detail/${result.insertedId}`);
+});
 
 let collection;
 app.listen(3000, async()=>{
