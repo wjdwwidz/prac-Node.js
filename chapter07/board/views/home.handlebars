@@ -1,8 +1,10 @@
+<script src="../services/search-service.js"></script>
+
 <h1>{{title}}</h1>
 
 <!-- 검색어영역 -->
-<input type = "text" id = "search"value="" size ="50" placeholder="검색어를 입력하세요." />
-<button>검색</button>
+<input type = "text" id = "search" value="{{search}}" size ="50" placeholder="검색어를 입력하세요." />
+<button onclick="submitSearchQuery()">검색</button>
 <br>
 
 <!-- 글쓰기 페이지 이동 링크 -->
