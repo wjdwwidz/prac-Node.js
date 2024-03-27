@@ -1,6 +1,7 @@
 const express = require("express");
 const handlebars = require("express-handlebars");
 const app = express();
+const mongodbConnection = require("./configs/mongodb-connection");
 
 app.engine("handlebars", handlebars.engine()); //템플릿 엔진으로 핸들바 등록
 app.set("view engine", "handlebars"); //웹페이지 로드시 사용할 템플릿 엔진 설정 
@@ -20,4 +21,12 @@ app.get("/detail/:id",async(req,res)=>{
 	});
 });
 
-app.listen(3000);
+
+let collection;
+app.listen(3000, async()=>{
+	console.log("http://localhost:3000 Server Start");
+	const mongoClient = await mongodbConnection();
+	collection = mongoClient.db('board').collection("post");
+	//db()를 통해 데이터베이스 선택, collection("post") 를 사용해 컬렉션을 선택
+	console.log(`MongoDB Connected`);
+});
