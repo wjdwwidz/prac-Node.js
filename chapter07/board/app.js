@@ -27,6 +27,20 @@ app.get("/detail/:id",async(req,res)=>{
 app.get("/write",async(req,res)=>{
 	res.render("write", {title:"테스트 게시판"});
 })
+app.get("/", async(req,res)=>{
+	const page = parseInt(req.query.page) || 1;
+	const search = req.query.search || "";
+	try{
+		//postService.list에서 글 목록과 페이지네이터를 가져옴
+		const [posts, paginator] = await PostService.list(collection, page, search);
+		//리스트 페이지 렌더링
+		res.render("home",{title:"테스트 게시판", search, paginator, posts});
+	}catch(error){
+		console.error(error);
+		res.render("home", {title:"테스트 게시판"});
+		//에러가 나는 경우는 빈 값으로 렌더링
+	}
+});
 
 app.post("/write", async(req,res)=>{
 	const post = req.body;
