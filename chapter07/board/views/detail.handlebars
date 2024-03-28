@@ -1,56 +1,72 @@
 <h1>{{title}}</h1>
-<h2 class="text-xl">제목입니다.</h2>
-<div>
-    작성자: <b>작성자 이름</b>
-</div>
-<div>
-    조회수: 9999 | 작성일시: 2022-01-01 00:00:00
-	<!-- 게시글 관련 버튼 영역 -->
-    <button onclick="modifypost()">수정</button>
+{{#with post}}
+  <h2 class="text-xl">{{title}}</h2>
+  <!-- 게시물 제목 -->
+  <div>
+    작성자:
+    <b>{{writer}}</b>
+    <!-- 작성자 이름 -->
+  </div>
+  <div>
+    조회수:
+    {{hits}}
+    | 작성일시:
+    {{dateString createdDt}}
+    <!-- 조회수 및 작성일 -->
+    <button onclick="modifyPost()">수정</button>
     <button onclick="deletePost()">삭제</button>
-</div>
-    
-<div>
-        <pre>본문입니다. 하이호이</pre><!-- 본문 표시 영역 -->
-</div>
-    
+  </div>
 
-<section>
+  <div>
+    <pre>{{content}}</pre><!-- 본문 표시 영역 -->
+  </div>
+
+  <section>
     <div>
-        <h3>3개의 댓글이 있습니다.</h3>
-	</div>
+      <h3>3개의 댓글이 있습니다.</h3>
+    </div>
     <form method="post" action="/write-comment">
-        <!-- 댓글 작성 폼 -->
-        <div>
-            <input type="text" name="name" placeholder="이름" />
-            <input type="password" name="password" placeholder="비밀번호" />
-        </div>
-        <div>
-            <textarea cols="40" rows="3" name="comment" placeholder="댓글을 입력하세요."></textarea>
-        	<!-- 댓글 전송 버튼 -->
-			<br /><br /><button type="submit">댓글 쓰기</button>
-        </div>
-        </form>
-</section>
+      <!-- 댓글 작성 폼 -->
+      <div>
+        <input type="text" name="name" placeholder="이름" />
+        <input type="password" name="password" placeholder="비밀번호" />
+      </div>
+      <div>
+        <textarea
+          cols="40"
+          rows="3"
+          name="comment"
+          placeholder="댓글을 입력하세요."
+        ></textarea>
 
+        <!-- 댓글 전송 버튼 -->
+        <br /><br /><button>댓글 쓰기</button>
+      </div>
+    </form>
+  </section>
 
-<!-- 댓글 표시 영역 -->
-<section>
+  <!-- 댓글 표시 영역 -->
+  <section>
     <div>
-        <div>
-            작성자: <b>댓글 작성자</b>
-        </div>
-        <div>
-            작성일시: 2022-01-01 00:00:00 
-			<button onclick="deleteComment('1')">삭제</button>
-        </div>
+      <div>
+        작성자:
+        <b>댓글 작성자</b>
+      </div>
+      <div>
+        작성일시: 2022-01-01 00:00:00
+        <button onclick="deleteComment('1')">삭제</button>
+      </div>
     </div>
-	<div>
-        <pre>{{comment}}</pre>
+    <div>
+      <pre>{{comment}}</pre>
     </div>
-</section>
+  </section>
+{{/with}}
 <footer>
-    <div>
-		<a href="/">목록으로</a>
-    </div>
+  <div>
+    <a href="/">목록으로</a>
+  </div>
 </footer>
+<script>
+  async function modifyPost() {} async function deletePost() {}
+</script>
