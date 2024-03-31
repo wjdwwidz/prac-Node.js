@@ -4,14 +4,14 @@ module.exports = {
 		commonjs: true,
 		es2021: true,
 	},
-	extends: ['airbnb-base', 'prettier', 'plugin:html/recommended'],
-	Plugins: ['html'],
+	extends: ['airbnb-base', 'plugin:prettier/recommended'],
+	Plugins: ['formatjs'],
 	overrides: [
 		{
 			env: {
 				node: true,
 			},
-			files: ['.eslintrc.{js,cjs}', '*.handlebars'],
+			files: ['.eslintrc.{js,cjs}'],
 			parserOptions: {
 				sourceType: 'script',
 			},
