@@ -1,6 +1,7 @@
 const DB = [];
 
 function saveDB(user) {
+  //const oldDBSize = DB.length + 1; //실패 테스트용
   const oldDBSize = DB.length;
   DB.push(user);
   console.log(`save ${user.name} to DB`);
@@ -29,10 +30,14 @@ function getResult(user) {
 }
 
 function registerByPromise(user) {
-  //비동기 호출이지만 순서를 지켜서 실행
-  const result = saveDB(user).then(sendEmail).then(getResult);
+  // 비동기 호출이지만 순서를 지켜서 실행
+  const result = saveDB(user)
+    .then(sendEmail)
+    .then(getResult)
+    .catch((error) => new Error(error))
+    // 성공, 실패 여부에 관계없이 실행
+    .finally(() => console.log("완료!"));
   console.log(result);
-
   return result;
 }
 
