@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const Person = require("./person-model");
 
-mongoose.set("StrictQuery", false); //경고 뜨지 않게 설정
+mongoose.set("strictQuery", false); //경고 뜨지 않게 설정
 
 const app = express();
 app.use(bodyParser.json()); //HTTP에서 Body를 파싱하기 위한 설정
@@ -11,9 +11,9 @@ app.listen(3000, async () => {
   console.log("Server started");
   const mongodbUri =
     "mongodb+srv://wjdwwidz:nodewjdwwidz@cluster0.5fd3khr.mongodb.net/test?retryWrites=true&w=majority";
-  (await mongoose.connect(mongodbUri, { useNewUrlParser: true })).then(
-    console.log("Connected to MongoDB")
-  );
+  mongoose
+    .connect(mongodbUri, { useNewUrlParser: true })
+    .then(console.log("Connected to MongoDB"));
 });
 //모든 person 데이터 출력
 app.get("/person", async (req, res) => {
