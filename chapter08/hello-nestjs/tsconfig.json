@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "module" : "CommonJS", 
+        "target" : "ESNEXT", // 컴파일시 사용할 ECMA 버전
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+    }
+}
