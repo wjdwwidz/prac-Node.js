@@ -1,11 +1,9 @@
 import {Controller, Get} from '@nestjs/common';
 
-@Controller() 
+@Controller()
 export class HelloController {
     @Get()
     hello(){
         return "안녕하세요! NestJS로 만든 첫 애플리케이션 입니다.";
     }
 }
-
-console.log("Hello NestJS!");
