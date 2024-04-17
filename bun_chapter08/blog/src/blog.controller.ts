@@ -28,7 +28,7 @@ export class BlogController {
     }
 
     @Delete('/:id')
-    deletePost(){
+    deletePost(@Param('id') id:String){
         console.log('게시글 삭제');
         this.blogService.delete(id);
         return 'success';

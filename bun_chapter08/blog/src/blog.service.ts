@@ -1,5 +1,5 @@
 //메모리에 저장하는 블로그 서비스 클래스
-import { PostDto } from './blog.model.ts';
+import { PostDto } from './blog.model';
 
 export class BlogService {
     posts = []; // 게시글을 배열의 형태로 메모리에 담기 위해서 posts 배열 선언
