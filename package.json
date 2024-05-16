@@ -6,6 +6,7 @@
     "@nestjs/platform-express": "^10.3.7",
     "nest": "^0.1.6",
     "reflect-metadata": "^0.2.2",
-    "typescript": "^5.4.4"
+    "typescript": "^5.4.4",
+    "ws": "^8.17.0"
   }
 }
