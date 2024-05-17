@@ -21,6 +21,7 @@
   "devDependencies": {
     "@nestjs/cli": "^10.3.2",
     "@types/node": "^20.12.12",
+    "@types/socket.io": "^3.0.2",
     "typescript": "^5.4.5"
   }
 }
